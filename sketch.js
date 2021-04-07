@@ -10,7 +10,7 @@ const radius = 5;
 function setup() {
   createCanvas(windowWidth * 0.9, windowHeight * 0.9);
   frameRate(fr);
-  
+  getParams();
   reset();
   colorMode(HSB, 360, 100, 100);
   strokeWeight(1);
