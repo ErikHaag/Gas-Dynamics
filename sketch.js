@@ -8,7 +8,7 @@ let debug = false;
 const radius = 5;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth * 0.9, windowHeight * 0.9);
   frameRate(fr);
   reset();
   colorMode(HSB, 360, 100, 100);
