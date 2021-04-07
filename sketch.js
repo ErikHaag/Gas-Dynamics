@@ -1,15 +1,16 @@
 let particles = [];
 const fr = 30
-const particleCount = 600
-let particleWeights = [1, 1, 1, 1, 5, 5, 5, 10, 10, 50];
-let pW
-let g = 0;
+let particleCount = 600
+let particleMasses;
+let pM
+let g;
 let debug = false;
 const radius = 5;
 
 function setup() {
   createCanvas(windowWidth * 0.9, windowHeight * 0.9);
   frameRate(fr);
+  
   reset();
   colorMode(HSB, 360, 100, 100);
   strokeWeight(1);
@@ -29,7 +30,7 @@ function draw() {
 
 function reset() {
   particles.splice(0);
-  pW = particleWeights;
+  pM = particleMasses;
   for (let i = 1; i <= particleCount; i++) {
     // create particleCount particles randomly on the right side of the screen
     particles.push(createParticle(
@@ -38,6 +39,14 @@ function reset() {
       randInt(-10, 11), randInt(-10, 11),
       random(pW)));
   }
+}
+
+function getParams() {
+  let params = (new URL(document.location)).searchParams;
+  particleMasses = params.get('masses') ? params.get('masses').slice(1,-1).split(',').forEach(x => int(x)) : [1, 1, 1, 1, 5, 5, 5, 10, 10, 50];
+  particleCount = int(params.get('count')) : 600;
+  g = int(params.get('g')) : 0;
+  debug = boolean(params.get('debug')) : false;
 }
 
 function randInt(a, b) {
