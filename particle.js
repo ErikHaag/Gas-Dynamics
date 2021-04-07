@@ -6,7 +6,7 @@ function createParticle(px, py, vx, vy, m) {
     mass: m,
     draw: function() {
       push();
-      let h = map(this.mass, min(pW), max(pW), 0, 180);
+      let h = map(this.mass, min(pM), max(pM), 0, 180);
       //map mass to hue
       fill(h, 100, 100);
       translate(this.pos);
