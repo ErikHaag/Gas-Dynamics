@@ -43,10 +43,10 @@ function reset() {
 
 function getParams() {
   let params = (new URL(document.location)).searchParams;
-  particleMasses = params.get('masses').length > 2 ? params.get('masses').slice(1,-1).split(',').forEach(x => int(x)) : [1, 1, 1, 1, 5, 5, 5, 10, 10, 50];
-  particleCount = params.get('count').length >= 1 ? int(params.get('count')) : 600;
-  g = params.get('g').length >= 1 ? int(params.get('g')) : 0;
-  debug = params.get('debug').length >= 1 ? boolean(params.get('debug')) : false;
+  particleMasses = params.get('masses') === null ? [1, 1, 1, 1, 5, 5, 5, 10, 10, 50] : params.get('masses').slice(1,-1).split(',').forEach(x => int(x));
+  particleCount = params.get('count') === null ? 600 : int(params.get('count'));
+  g = params.get('g') === null ? 0 : int(params.get('g'));
+  debug = params.get('debug') == true ? true : false;
 }
 
 function randInt(a, b) {
