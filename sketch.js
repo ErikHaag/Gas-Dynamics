@@ -37,7 +37,7 @@ function reset() {
       randInt(width / 2 + radius, width - radius),
       randInt(radius, height - radius),
       randInt(-10, 11), randInt(-10, 11),
-      random(pW)));
+      random(pM)));
   }
 }
 
