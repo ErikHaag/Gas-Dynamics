@@ -45,9 +45,11 @@ function getParams() {
   let params = (new URL(document.location)).searchParams;
   if (params.get('masses') !== null) {
     particleMasses = params.get('masses');
-    particleMasses.slice(1,-1);
-    particleMasses.split(',');
+    particleMasses = particleMasses.slice(1,-1);
+    particleMasses = particleMasses.split(',');
     particleMasses.forEach(x => int(x));
+  } else {
+    particleMasses = [1,10];
   }
   particleCount = params.get('count') === null ? 600 : int(params.get('count'));
   g = params.get('g') === null ? 0 : int(params.get('g'));
