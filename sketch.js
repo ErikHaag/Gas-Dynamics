@@ -46,7 +46,7 @@ function getParams() {
   particleMasses = params.get('masses') === null ? [1, 1, 1, 1, 5, 5, 5, 10, 10, 50] : params.get('masses').slice(1,-1).split(',').forEach(x => int(x));
   particleCount = params.get('count') === null ? 600 : int(params.get('count'));
   g = params.get('g') === null ? 0 : int(params.get('g'));
-  debug = params.get('debug') == true ? true : false;
+  debug = params.get('debug') == 'true' ? true : false;
 }
 
 function randInt(a, b) {
