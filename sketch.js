@@ -43,7 +43,12 @@ function reset() {
 
 function getParams() {
   let params = (new URL(document.location)).searchParams;
-  particleMasses = params.get('masses') === null ? [1, 1, 1, 1, 5, 5, 5, 10, 10, 50] : params.get('masses').slice(1,-1).split(',').forEach(x => int(x));
+  if (params.get('masses') !== null) {
+    particleMasses = params.get('masses');
+    particleMasses.slice(1,-1);
+    particleMasses.split(',');
+    particleMasses.forEach(x => int(x));
+  }
   particleCount = params.get('count') === null ? 600 : int(params.get('count'));
   g = params.get('g') === null ? 0 : int(params.get('g'));
   debug = params.get('debug') == 'true' ? true : false;
